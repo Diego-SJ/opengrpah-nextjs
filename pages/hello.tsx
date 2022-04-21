@@ -10,7 +10,7 @@ const Home: NextPage = () => {
 				<title>Next.js | OG test</title>
 				<meta
 					property="og:image"
-					content="https://optest.netlify.app/api/og-image?name=Next.js&stage=adopt"
+					content="https://firebasestorage.googleapis.com/v0/b/zenda-186015.appspot.com/o/cms%2Fzendala%20landscape.png?alt=media&token=af50885a-7b33-474f-8a5f-15a114cf55f6"
 				/>
 				<meta property="og:title" content="Hello | OG test" />
 				<meta property="og:description" content="Hello - nextjs" />
