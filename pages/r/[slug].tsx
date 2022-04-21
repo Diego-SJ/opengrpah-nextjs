@@ -10,7 +10,7 @@ const Referral = () => {
 				<title>Next.js | OG test</title>
 				<meta
 					property="og:image"
-					content="https://inthepocket.tech/api/og-image?name=Next.js&stage=adopt"
+					content="https://optest.netlify.app/api/og-image?name=Next.js&stage=adopt"
 				/>
 				<meta property="og:title" content="Next.js | OG test" />
 				<meta property="og:description" content="Open graph testing - nextjs" />
