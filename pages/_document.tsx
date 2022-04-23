@@ -1,6 +1,7 @@
-import Document, { Head, Html, Main, NextScript } from 'next/document';
-import * as React from 'react';
-import { ServerStyleSheet as SCServerStyleSheet } from 'styled-components';
+import React from 'react';
+import Document, { Html, Head, Main, NextScript } from 'next/document';
+import { ServerStyleSheet } from 'styled-components';
+import { ServerStyleSheets } from '@mui/styles';
 
 class MyDocument extends Document {
 	render() {
@@ -66,28 +67,31 @@ class MyDocument extends Document {
 }
 
 MyDocument.getInitialProps = async (ctx) => {
-	// Set up our styled-components and material-ui style sheets here
-	// Render app and page and get the context of the page with collected side effects.
-	const scSheet = new SCServerStyleSheet();
+	const sheet = new ServerStyleSheet();
+	const materialSheets = new ServerStyleSheets();
 	const originalRenderPage = ctx.renderPage;
 
-	ctx.renderPage = () =>
-		originalRenderPage({
-			enhanceApp: (App) => (props) => scSheet.collectStyles(<App {...props} />)
-		});
+	try {
+		ctx.renderPage = () =>
+			originalRenderPage({
+				enhanceApp: (App) => (props) =>
+					sheet.collectStyles(materialSheets.collect(<App {...props} />))
+			});
 
-	const initialProps = await Document.getInitialProps(ctx);
-
-	return {
-		...initialProps,
-		// Styles fragment is rendered after the app and page rendering finish.
-		styles: [
-			<React.Fragment key="styles">
-				{initialProps.styles}
-				{scSheet.getStyleElement()}
-			</React.Fragment>
-		]
-	};
+		const initialProps = await Document.getInitialProps(ctx);
+		return {
+			...initialProps,
+			styles: [
+				<React.Fragment key="styles">
+					{initialProps.styles}
+					{sheet.getStyleElement()}
+					{materialSheets.getStyleElement()}
+				</React.Fragment>
+			]
+		};
+	} finally {
+		sheet.seal();
+	}
 };
 
 export default MyDocument;
