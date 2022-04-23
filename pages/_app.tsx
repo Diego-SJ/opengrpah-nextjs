@@ -2,9 +2,8 @@ import React from 'react';
 import Head from 'next/head';
 import GlobalThemeProvider from '../theme/theme';
 import App, { AppContext, AppProps } from 'next/app';
-import { PersistGate } from 'redux-persist/integration/react';
 import { Provider } from 'react-redux';
-import store, { persistor } from '../redux/store';
+import store from '../redux/store';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
 	return (
@@ -18,9 +17,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 			</Head>
 
 			<Provider store={store}>
-				<PersistGate loading={null} persistor={persistor}>
-					<Component {...pageProps} />
-				</PersistGate>
+				<Component {...pageProps} />
 			</Provider>
 		</GlobalThemeProvider>
 	);
