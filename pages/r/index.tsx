@@ -1,16 +1,17 @@
+import { useRouter } from 'next/router';
 import React from 'react';
 import HeadSeo from '../../components/Seo';
 import styles from '../../styles/Home.module.css';
 
 const Referral = () => {
+	const router = useRouter();
 	return (
 		<div className={styles.container}>
 			<HeadSeo
 				seo={{
 					metaTitle: 'Referral',
 					metaDescription: 'Referral - test',
-					shareImage:
-						'https://firebasestorage.googleapis.com/v0/b/zenda-186015.appspot.com/o/cms%2Fzendala%20landscape.png?alt=media&token=af50885a-7b33-474f-8a5f-15a114cf55f6'
+					shareImage: `http://localhost:3000/api/og-image?age=${router?.query?.a}`
 				}}
 			/>
 
