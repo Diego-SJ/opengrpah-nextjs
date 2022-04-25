@@ -21,12 +21,10 @@ const Home: NextPage = () => {
 				</h1>
 
 				<div>
-					<Link href="/hello" passHref>
-						<h2>Helllo</h2>
-					</Link>
-
-					<Link href="/r" passHref>
-						<h2>Referral</h2>
+					<Link href="/api/og-image?age=10" passHref>
+						<a>
+							<h2>OG API</h2>
+						</a>
 					</Link>
 				</div>
 			</main>
