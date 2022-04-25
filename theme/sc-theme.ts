@@ -93,4 +93,8 @@ export const GlobalStyles = createGlobalStyle`
 		font-size: inherit;
 		font-weight: 600;
 	}
+
+	h1, h2 {
+		font-size: 3rem;
+	}
 `;

@@ -1,9 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import GlobalThemeProvider from '../theme/theme';
-import App, { AppContext, AppProps } from 'next/app';
-import { Provider } from 'react-redux';
-import store from '../redux/store';
+import { AppProps } from 'next/app';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
 	return (
@@ -16,18 +14,9 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 				/>
 			</Head>
 
-			<Provider store={store}>
-				<Component {...pageProps} />
-			</Provider>
+			<Component {...pageProps} />
 		</GlobalThemeProvider>
 	);
-};
-
-MyApp.getInitialProps = async (appContext: AppContext) => {
-	// calls page's `getInitialProps` and fills `appProps.pageProps`
-	const appProps = await App.getInitialProps(appContext);
-
-	return { ...appProps };
 };
 
 export default MyApp;

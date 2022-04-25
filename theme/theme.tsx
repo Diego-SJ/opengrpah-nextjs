@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyles } from './sc-theme';
-import MuiTheme, { colorPallete } from './mui-theme';
 
 export const NEW_THEME = {
 	app: {
@@ -49,17 +48,6 @@ export const NEW_THEME = {
 };
 
 export const lightTheme = {
-	title: colorPallete.orange,
-	subtitle: colorPallete.black,
-	tex: colorPallete.gray,
-	root: colorPallete.orange,
-	rootDark: colorPallete.orangeDark,
-	root1: colorPallete.yellow,
-	root1Dark: colorPallete.yellowDark,
-	root2: colorPallete.orange,
-	root2Dark: colorPallete.orangeDark,
-	root3: colorPallete.violet,
-	root3Dark: colorPallete.violetDark,
 	root4: '#eb7f53',
 	root4Dark: '#d36f48',
 	gradient: {
@@ -101,7 +89,6 @@ export const lightTheme = {
 		xs: '',
 		sm: '0px 0px 20px rgba(0, 0, 14, 0.156605)'
 	},
-	...colorPallete,
 	...NEW_THEME
 };
 
@@ -119,10 +106,8 @@ const GlobalThemeProvider: React.FC<{ children?: React.ReactNode }> = ({ childre
 
 	return (
 		<ThemeProvider theme={theme}>
-			<MuiTheme>
-				<GlobalStyles />
-				{children}
-			</MuiTheme>
+			<GlobalStyles />
+			{children}
 		</ThemeProvider>
 	);
 };
